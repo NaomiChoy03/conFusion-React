@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-
 
 function RenderDish({dish}) {
     return (
@@ -37,13 +36,7 @@ function RenderComments({comments}) {
                 {commentsDiv}
             </div>
         </div>
-        //{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
     )
-
-    //const test = typeof comments;
-    //return (
-    //    <div>{test}</div>
-    //);
 }
 
 const DishDetail = (props) => {
