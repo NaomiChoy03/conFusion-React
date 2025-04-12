@@ -19,21 +19,29 @@ class Main extends Component {
     onDishSelect(dishId) {
         this.setState({ selectedDish: dishId});
     }
-    render() {/*
+    render() {
         const HomePage = () => {
             return (
                 <Home />
             )
-        }*/
+        }
 
         return (
+            /*
             <div>
                 <Header />
                 <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
                 <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+                <Routes>
+                    <Route path='/home' element={<HomePage />} />
+                    <Route exact path='/menu' element={<Menu dishes={this.state.dishes} />} />
+                    <Route path='/aboutus' element={<div>About Us</div>} />
+                    <Route path='/contactus' element={<div>Contact Us</div>} />
+                    <Route path="/*" element={<HomePage />} />
+                </Routes>
                 <Footer />
-            </div>
-            /*
+            </div>*/
+            
             <div>
                 <Header />
                 <Routes>
@@ -44,11 +52,10 @@ class Main extends Component {
                     <Route path="/*" element={<HomePage />} />
                 </Routes>
                 <Footer />
-            </div>*/
+            </div>
         );
     }
 }
-
 
         /*
         const HomePage = () => {
@@ -62,11 +69,5 @@ class Main extends Component {
             );
         }
         */
-
-
-/*
-<Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
-<DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
-*/
 
 export default Main;
