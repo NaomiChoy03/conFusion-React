@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
 
 import Test from './components/TestComponent';
+import MainComponent from './components/MainComponent';
 
 const store = ConfigureStore();
 
@@ -20,7 +21,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             $({store.getState().dishes.filter((dish) => dish.featured)[0].name})
-            <Test />
+            <Main />
           </div>
         </BrowserRouter>
       </Provider>
