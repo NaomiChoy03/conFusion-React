@@ -20,7 +20,6 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
-            $({store.getState().dishes.filter((dish) => dish.featured)[0].name})
             <Main />
           </div>
         </BrowserRouter>
