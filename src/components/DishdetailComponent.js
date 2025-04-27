@@ -29,22 +29,12 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        alert("Values: " + "\ndishId: " + this.props.dishId/* + " \nrating: " + this.values.rating + "\nauthor: " + this.values.author + "\ncomments: " + this.values.comment*/);
-        //event.preventDefault();
+        alert("dishId: " + this.props.dishId + " \nrating: " + values.rating + "\nauthor: " + values.author + "\ncomments: " + values.comment);
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
-/*
-// TODO Check if this is needed
-    handleSubmit(values) {
-        this.toggleModal();
-        alert("Values:" + "\ndishid: " + this.props.dishId + "\nrating: " + values.rating + "\nauthor: " + values.author + "\ncomments: " + values.comment);
-        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
-        // For debuggin purposes
-        console.log("Values:" + "\ndishid: " + this.props.dishId + "\nrating: " + values.rating + "\nauthor: " + values.author + "\ncomments: " + values.comment);
-    }*/
-
     render() {
-        return (// value={this.state.contactType}onChange={this.handleInputChange}
+        return (
             <div className="container">
                 <div className="row">
                     <Button outline onClick={this.toggleModal}><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
@@ -54,7 +44,7 @@ class CommentForm extends Component {
                             <LocalForm onSubmit={this.handleSubmit}>
                                 <FormGroup>
                                     <Label htmlFor="rating">Rating</Label>
-                                    <Control.select model=".rating" name="rating" className="form-control">
+                                    <Control.select model=".rating" name="rating" className="form-control" defaultValue="1">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -108,7 +98,7 @@ function RenderDish({dish}) {
     )
 }
 
-function RenderComments({comments, dishId}) {
+function RenderComments({comments, addComment, dishId}) {
     const commentsDiv = comments.map((comment) => { 
         return (
             <div>
@@ -125,7 +115,7 @@ function RenderComments({comments, dishId}) {
             <div>
                 <h4>Comments</h4>
                 {commentsDiv}
-                <CommentForm dishId={dishId}/>
+                <CommentForm dishId={dishId} addComment={addComment}/>
             </div>
         )
     else
@@ -153,7 +143,7 @@ const DishDetail = (props) => {
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} dishId={props.dish.id} />
+                        <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
                     </div>
                 </div>
             </div>
